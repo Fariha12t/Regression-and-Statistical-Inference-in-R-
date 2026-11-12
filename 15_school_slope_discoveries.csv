@@ -1,0 +1,6 @@
+procedure,rejected,of
+Unadjusted,12,160
+Bonferroni (FWER),1,160
+Holm (FWER),1,160
+Benjamini-Hochberg (FDR),1,160
+Benjamini-Yekutieli (FDR),0,160

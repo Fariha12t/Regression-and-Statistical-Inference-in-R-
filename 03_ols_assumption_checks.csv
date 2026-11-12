@@ -1,0 +1,6 @@
+check,value
+Breusch-Pagan (constant variance),"BP = 55.4, df = 5, p < 0.001"
+Skewness of residuals,-0.17
+Excess kurtosis of residuals,-0.53
+Max Cook's distance,0.0021
+Max VIF,1.32

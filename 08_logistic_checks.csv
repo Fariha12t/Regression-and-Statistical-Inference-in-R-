@@ -1,0 +1,6 @@
+Check,Result
+"Linearity of the logit (add quadratic SES terms, LRT)","chi2(2) = 0.04, p = 0.98"
+Max VIF,1.22
+Max Cook's distance,0.0023
+Share of binned residuals inside the 95% band,94%
+AUC (discrimination),0.71

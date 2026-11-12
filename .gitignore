@@ -1,11 +1,12 @@
-__pycache__/
-*.pyc
-.pytest_cache/
-.venv/
-venv/
-.ipynb_checkpoints/
+# R / RStudio
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+.Rapp.history
+*.knit.md
+report_cache/
+report_files/
+# OS
 .DS_Store
-nifty.csv
-# Generated outputs. Remove the next two lines if you want to commit your results (recommended once you have run it).
-results/*
-!results/.gitkeep
+Thumbs.db

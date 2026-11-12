@@ -1,0 +1,15 @@
+variable,level,description
+School,school,School identifier (160 schools)
+MathAch,student,"Mathematics achievement score (outcome, continuous)"
+SES,student,Socio-economic status index (roughly centred at 0)
+ses_c,student,SES minus own school's mean SES (within-school SES)
+ses_mean,school,School mean SES (between-school SES)
+Minority,student,Ethnic minority status (No/Yes)
+Sex,student,Male/Female
+Sector,school,Public or Catholic
+Size,school,School enrolment
+PRACAD,school,Proportion of students on the academic track
+DISCLIM,school,Disciplinary climate scale (higher = worse climate)
+HIMINTY,school,High-minority-enrolment school (0/1)
+n_school,school,Students sampled in the school
+high_ach,student,1 if MathAch is in the top quartile (derived binary outcome)
