@@ -1,0 +1,16 @@
+term,method,coverage,mean_width,Term
+MinorityYes,Cluster bootstrap,0.92,0.9064807428408785,Minority (vs not)
+MinorityYes,Cluster-robust,0.94,0.9304778180147183,Minority (vs not)
+MinorityYes,Classical,0.8,0.6866119913415321,Minority (vs not)
+SectorCatholic,Cluster bootstrap,0.94,1.095530649556197,Catholic school (vs public)
+SectorCatholic,Cluster-robust,0.96,1.1067961280011263,Catholic school (vs public)
+SectorCatholic,Classical,0.78,0.6176267271667335,Catholic school (vs public)
+SexFemale,Cluster bootstrap,1,0.726158151016458,Female (vs male)
+SexFemale,Cluster-robust,1,0.7418602342063736,Female (vs male)
+SexFemale,Classical,0.96,0.5692851082545816,Female (vs male)
+ses_c,Cluster bootstrap,1,0.42507415995445186,"SES, within school (per unit)"
+ses_c,Cluster-robust,0.96,0.43363099497583585,"SES, within school (per unit)"
+ses_c,Classical,0.98,0.4330015091084054,"SES, within school (per unit)"
+ses_mean,Cluster bootstrap,0.92,1.3673092235411584,School mean SES (per unit)
+ses_mean,Cluster-robust,0.94,1.3671774523904099,School mean SES (per unit)
+ses_mean,Classical,0.76,0.7883076133777772,School mean SES (per unit)

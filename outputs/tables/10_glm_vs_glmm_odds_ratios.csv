@@ -9,8 +9,8 @@ School mean SES (per unit),"Logistic GLM, cluster-robust",2.855642169732365,2.24
 Minority (vs not),"Logistic GLM, cluster-robust",0.3849047790092796,0.31088488402027964,0.4765483834026429
 Female (vs male),"Logistic GLM, cluster-robust",0.590331262199537,0.5147135383285091,0.6770581560022593
 Catholic school (vs public),"Logistic GLM, cluster-robust",1.4013477126936018,1.1750758058089603,1.6711904050476665
-"SES, within school (per unit)",Logistic GLMM (random intercept),1.6931955571156174,1.5443314865899462,1.8564092097652696
-School mean SES (per unit),Logistic GLMM (random intercept),3.049911435944331,2.3787626676572375,3.9104194351028703
-Minority (vs not),Logistic GLMM (random intercept),0.37597621916324475,0.3137788591234357,0.45050236262309873
-Female (vs male),Logistic GLMM (random intercept),0.6131939947943069,0.5399533556862662,0.696369179470893
-Catholic school (vs public),Logistic GLMM (random intercept),1.3812321652510413,1.1433745699542552,1.668571563910511
+"SES, within school (per unit)",Logistic GLMM (random intercept),1.6931956597236382,1.5443311474549144,1.85640984243029
+School mean SES (per unit),Logistic GLMM (random intercept),3.0499100743106884,2.3787683821139654,3.9104065495924254
+Minority (vs not),Logistic GLMM (random intercept),0.37597600051017344,0.3137785089220639,0.4505023414294327
+Female (vs male),Logistic GLMM (random intercept),0.6131940453095321,0.5399528837756414,0.6963699028215675
+Catholic school (vs public),Logistic GLMM (random intercept),1.3812323871985364,1.1433725008918725,1.668575119620256

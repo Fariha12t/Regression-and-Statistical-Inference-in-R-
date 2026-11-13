@@ -2,7 +2,7 @@
 title: "Regression and Statistical Inference in R"
 subtitle: "What predicts mathematics achievement? Linear, generalised linear and mixed-effects models on the High School and Beyond survey"
 author: "Fariha Taneem"
-date: "12 November 2026"
+date: "13 November 2026"
 output:
   html_document:
     toc: true
@@ -641,7 +641,7 @@ Section 5 showed that classical intervals are too narrow when observations clust
 
 ## 8.1 Cluster bootstrap vs naive bootstrap for the linear model
 
-The **cluster bootstrap** resamples whole *schools* with replacement, preserving the within-school correlation. The **naive case bootstrap** resamples individual students, which breaks the clusters apart and should reproduce the classical (overconfident) intervals. Both use 2,000 replicates with percentile intervals.
+The **cluster bootstrap** resamples whole *schools* with replacement, preserving the within-school correlation. The **naive case bootstrap** resamples individual students, which breaks the clusters apart and should reproduce the classical (overconfident) intervals. Both use 200 replicates with percentile intervals.
 
 
 ```r
@@ -666,16 +666,16 @@ Table: Percentile bootstrap intervals for OLS coefficients
 
 |Term                          |Method                      | Estimate| Boot SE|95% CI         |
 |:-----------------------------|:---------------------------|--------:|-------:|:--------------|
-|SES, within school (per unit) |Naive bootstrap (students)  |     1.92|    0.11|[1.70, 2.15]   |
-|School mean SES (per unit)    |Naive bootstrap (students)  |     3.93|    0.20|[3.54, 4.33]   |
-|Minority (vs not)             |Naive bootstrap (students)  |    -2.71|    0.17|[-3.04, -2.38] |
-|Female (vs male)              |Naive bootstrap (students)  |    -1.37|    0.14|[-1.66, -1.10] |
-|Catholic school (vs public)   |Naive bootstrap (students)  |     1.77|    0.16|[1.45, 2.09]   |
-|SES, within school (per unit) |Cluster bootstrap (schools) |     1.92|    0.12|[1.69, 2.17]   |
-|School mean SES (per unit)    |Cluster bootstrap (schools) |     3.93|    0.36|[3.24, 4.63]   |
-|Minority (vs not)             |Cluster bootstrap (schools) |    -2.71|    0.26|[-3.23, -2.21] |
-|Female (vs male)              |Cluster bootstrap (schools) |    -1.37|    0.20|[-1.77, -1.00] |
-|Catholic school (vs public)   |Cluster bootstrap (schools) |     1.77|    0.28|[1.22, 2.29]   |
+|SES, within school (per unit) |Naive bootstrap (students)  |     1.92|    0.11|[1.70, 2.12]   |
+|School mean SES (per unit)    |Naive bootstrap (students)  |     3.93|    0.21|[3.57, 4.30]   |
+|Minority (vs not)             |Naive bootstrap (students)  |    -2.71|    0.18|[-3.05, -2.38] |
+|Female (vs male)              |Naive bootstrap (students)  |    -1.37|    0.14|[-1.70, -1.13] |
+|Catholic school (vs public)   |Naive bootstrap (students)  |     1.77|    0.15|[1.47, 2.08]   |
+|SES, within school (per unit) |Cluster bootstrap (schools) |     1.92|    0.11|[1.72, 2.15]   |
+|School mean SES (per unit)    |Cluster bootstrap (schools) |     3.93|    0.36|[3.22, 4.69]   |
+|Minority (vs not)             |Cluster bootstrap (schools) |    -2.71|    0.28|[-3.26, -2.13] |
+|Female (vs male)              |Cluster bootstrap (schools) |    -1.37|    0.21|[-1.78, -0.97] |
+|Catholic school (vs public)   |Cluster bootstrap (schools) |     1.77|    0.28|[1.26, 2.28]   |
 
 
 ```r
@@ -692,11 +692,11 @@ ggplot(bs_plot, aes(estimate, Term, colour = Method)) +
 
 <img src="outputs/figures/bootstrap-figure-1.png" style="display: block; margin: auto;" />
 
-The naive bootstrap reproduces the classical standard errors (for example school mean SES: 0.202 vs classical 0.201), while the cluster bootstrap gives 0.357, matching the cluster-robust sandwich estimate (0.348) and the mixed-model SE (0.343).
+The naive bootstrap reproduces the classical standard errors (for example school mean SES: 0.207 vs classical 0.201), while the cluster bootstrap gives 0.363, matching the cluster-robust sandwich estimate (0.348) and the mixed-model SE (0.343).
 
 ## 8.2 Parametric bootstrap, profile and Wald intervals for the final mixed model
 
-For the mixed model, the parametric bootstrap simulates new data from the fitted model, refits it, and takes percentiles of the refitted parameters (500 replicates). It also gives intervals for the variance components. These are compared with profile-likelihood and Wald intervals.
+For the mixed model, the parametric bootstrap simulates new data from the fitted model, refits it, and takes percentiles of the refitted parameters (100 replicates). It also gives intervals for the variance components. These are compared with profile-likelihood and Wald intervals.
 
 
 ```r
@@ -725,16 +725,16 @@ Table: 95% confidence intervals for the final mixed model
 
 |Parameter                           | Estimate|Wald           |Profile        |Parametric bootstrap |
 |:-----------------------------------|--------:|:--------------|:--------------|:--------------------|
-|SD of school intercepts             |     1.34|               |[1.11, 1.55]   |[1.11, 1.58]         |
-|Residual SD                         |     5.98|               |[5.88, 6.07]   |[5.88, 6.08]         |
-|Intercept                           |    13.31|[12.91, 13.70] |[12.91, 13.70] |[12.90, 13.70]       |
-|SES, within school (per unit)       |     2.58|[2.29, 2.88]   |[2.29, 2.88]   |[2.26, 2.88]         |
-|Catholic school (vs public)         |     1.71|[1.16, 2.25]   |[1.16, 2.25]   |[1.17, 2.24]         |
-|School mean SES (per unit)          |     4.05|[3.38, 4.72]   |[3.38, 4.72]   |[3.37, 4.71]         |
-|Minority (vs not)                   |    -2.77|[-3.17, -2.38] |[-3.17, -2.38] |[-3.21, -2.43]       |
-|Female (vs male)                    |    -1.22|[-1.54, -0.91] |[-1.54, -0.91] |[-1.53, -0.88]       |
-|Within-school SES x Catholic        |    -1.44|[-1.89, -0.99] |[-1.89, -0.99] |[-1.89, -0.99]       |
-|Within-school SES x School mean SES |     1.00|[0.44, 1.56]   |[0.44, 1.56]   |[0.45, 1.62]         |
+|SD of school intercepts             |     1.34|               |[1.11, 1.55]   |[1.12, 1.56]         |
+|Residual SD                         |     5.98|               |[5.88, 6.07]   |[5.87, 6.10]         |
+|Intercept                           |    13.31|[12.91, 13.70] |[12.91, 13.70] |[12.91, 13.72]       |
+|SES, within school (per unit)       |     2.58|[2.29, 2.88]   |[2.29, 2.88]   |[2.33, 2.90]         |
+|Catholic school (vs public)         |     1.71|[1.16, 2.25]   |[1.16, 2.25]   |[1.16, 2.28]         |
+|School mean SES (per unit)          |     4.05|[3.38, 4.72]   |[3.38, 4.72]   |[3.46, 4.78]         |
+|Minority (vs not)                   |    -2.77|[-3.17, -2.38] |[-3.17, -2.38] |[-3.17, -2.46]       |
+|Female (vs male)                    |    -1.22|[-1.54, -0.91] |[-1.54, -0.91] |[-1.57, -0.92]       |
+|Within-school SES x Catholic        |    -1.44|[-1.89, -0.99] |[-1.89, -0.99] |[-1.99, -1.06]       |
+|Within-school SES x School mean SES |     1.00|[0.44, 1.56]   |[0.44, 1.56]   |[0.33, 1.58]         |
 
 All three methods agree closely for the fixed effects, which is reassuring: with 160 schools and about 7,000 students the sampling distributions are close to normal. The Wald interval for the school-intercept SD is unavailable, which is why variance components are better handled with profile or bootstrap intervals.
 
@@ -753,11 +753,11 @@ bb <- lme4::bootMer(m0, icc_fun, nsim = N_BOOT_PARAM, type = "parametric")
 icc_ci <- quantile(bb$t, c(.025, .975))
 ```
 
-The null-model ICC is **0.18** with a 95% parametric-bootstrap interval of **[0.143, 0.219]**: between about 14% and 22% of the variance in maths achievement lies between schools.
+The null-model ICC is **0.18** with a 95% parametric-bootstrap interval of **[0.149, 0.215]**: between about 15% and 21% of the variance in maths achievement lies between schools.
 
 ## 8.4 Which intervals can be trusted? A coverage simulation
 
-A 95% interval should contain the true value in 95% of repeated samples. This can be tested by simulating many data sets from a model whose true parameters are known. New data are drawn from the fitted random-intercept model M1 (with a fresh set of random school effects each time), and the OLS coefficients are re-estimated with three kinds of interval: classical, cluster-robust ($t$ with 159 df) and cluster-bootstrap. The simulation uses 500 data sets and 300 bootstrap replicates per data set.
+A 95% interval should contain the true value in 95% of repeated samples. This can be tested by simulating many data sets from a model whose true parameters are known. New data are drawn from the fitted random-intercept model M1 (with a fresh set of random school effects each time), and the OLS coefficients are re-estimated with three kinds of interval: classical, cluster-robust ($t$ with 159 df) and cluster-bootstrap. The simulation uses 50 data sets and 300 bootstrap replicates per data set.
 
 
 ```r
@@ -778,15 +778,15 @@ knitr::kable(cov_wide, digits = 3,
 
 
 
-Table: Empirical coverage of nominal 95% intervals (500 simulated data sets; Monte Carlo SE about 1 point)
+Table: Empirical coverage of nominal 95% intervals (50 simulated data sets; Monte Carlo SE about 1 point)
 
 |Term                          | Classical| Cluster-robust| Cluster bootstrap|
 |:-----------------------------|---------:|--------------:|-----------------:|
-|Minority (vs not)             |     0.862|          0.958|             0.948|
-|Catholic school (vs public)   |     0.732|          0.954|             0.942|
-|Female (vs male)              |     0.880|          0.962|             0.968|
-|SES, within school (per unit) |     0.964|          0.964|             0.968|
-|School mean SES (per unit)    |     0.740|          0.944|             0.934|
+|Minority (vs not)             |      0.80|           0.94|              0.92|
+|Catholic school (vs public)   |      0.78|           0.96|              0.94|
+|Female (vs male)              |      0.96|           1.00|              1.00|
+|SES, within school (per unit) |      0.98|           0.96|              1.00|
+|School mean SES (per unit)    |      0.76|           0.94|              0.92|
 
 
 ```r
@@ -803,7 +803,7 @@ ggplot(cov_tab, aes(coverage, Term, colour = method)) +
 
 
 
-The classical interval for the Catholic-sector effect covers the truth only 73% of the time, and for school mean SES 74%, far below 95%. The cluster-robust and cluster-bootstrap intervals come much closer to the nominal level (95% and 94% for sector). With only 160 schools the bootstrap can be very slightly liberal, which is the usual small-cluster limitation. This simulation is the direct evidence for the claim that classical inference is unreliable here and cluster-aware inference is not.
+The classical interval for the Catholic-sector effect covers the truth only 78% of the time, and for school mean SES 76%, far below 95%. The cluster-robust and cluster-bootstrap intervals come much closer to the nominal level (96% and 94% for sector). With only 160 schools the bootstrap can be very slightly liberal, which is the usual small-cluster limitation. This simulation is the direct evidence for the claim that classical inference is unreliable here and cluster-aware inference is not.
 
 # 9. Multiple testing
 
@@ -1007,7 +1007,10 @@ sessionInfo()
 ## LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.12.0
 ## 
 ## locale:
-## [1] C
+##  [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       
+##  [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8   
+##  [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          
+## [10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   
 ## 
 ## time zone: Etc/UTC
 ## tzcode source: system (glibc)

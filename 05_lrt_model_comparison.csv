@@ -1,4 +1,0 @@
-Question,LR statistic,df,p
-Do SES slopes vary randomly across schools? (M1 vs M2),5.194182093226118,1 + 1 (boundary),0.049
-Do sector and school SES moderate the SES slope? (M1 vs M3a),40.865143548871856,2,<0.001
-Do slopes still vary after those interactions? (M3a vs M3b),0.015090845030499622,1 + 1 (boundary),0.947
