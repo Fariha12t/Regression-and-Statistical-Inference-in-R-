@@ -4,7 +4,7 @@ A complete statistical analysis of the **High School and Beyond** survey (7,185 
 
 The project covers linear regression, generalised linear models and mixed-effects models, with assumption checks at every stage, bootstrap confidence intervals, a simulation study of interval coverage, multiple-testing correction, and a written report.
 
-**Read the report:** [`report.md`](report.md) (renders on GitHub) or download [`report.html`](report.html) for the table of contents and collapsible code.
+**Read the report:** [`report.md`](report.md) (renders on GitHub) or regenerate `report.html` locally with `Rscript run_all.R` for the table of contents and collapsible code.
 
 | | |
 |---|---|
