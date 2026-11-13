@@ -1,4 +1,5 @@
-report.html linguist-generated=true
-report.md   linguist-generated=true
-outputs/**  linguist-generated=true
-data/**     linguist-vendored=true
+report.html linguist-vendored
+report.html linguist-generated
+report.md   linguist-documentation
+outputs/**  linguist-generated
+data/**     linguist-vendored
