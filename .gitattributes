@@ -1,0 +1,4 @@
+report.html linguist-generated=true
+report.md   linguist-generated=true
+outputs/**  linguist-generated=true
+data/**     linguist-vendored=true
